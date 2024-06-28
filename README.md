@@ -1,5 +1,8 @@
 # React + Vite
 
+This is project is Netflix clone using React .I used firebase for authentication purpose.
+
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:

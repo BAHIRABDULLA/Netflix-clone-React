@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import './TitleCards.css'
 import axios from 'axios';
 import cards_data from '../../assets/cards/Cards_data'
+import { Link } from 'react-router-dom';
 const TitleCards = ({ title, category }) => {
   const cardsRef = useRef()
 
@@ -9,7 +10,7 @@ const TitleCards = ({ title, category }) => {
 
   const options = {
     method: 'GET',
-    url: `https://api.themoviedb.org/3/movie/${category}?category:'now_playing`,
+    url: `https://api.themoviedb.org/3/movie/${category?category:'now_playing'}`,
     params: { language: 'en-US', page: '1' },
     headers: {
       accept: 'application/json',
@@ -42,10 +43,10 @@ const TitleCards = ({ title, category }) => {
       <div className="card-list" ref={cardsRef}>
         {
           apiData.map((card, index) => {
-            return <div className="card" key={index}>
+            return <Link to={`/player/${card.id}`} className="card" key={index}>
               <img src={`https://image.tmdb.org/t/p/original`+card.backdrop_path} alt="" />
               <p>{card.original_title}</p>
-            </div>
+            </Link>
           })
         }
       </div>
